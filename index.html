@@ -2,285 +2,680 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سياسة الخصوصية - تطبيق تعلم</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>سياسة الخصوصية | تطبيق تعلّم</title>
+    <!-- Google Fonts - تحسين الخط العربي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (أيقونات احترافية) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(125deg, #1a1f3a 0%, #2d1b4e 45%, #0f2b3d 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            position: relative;
+            line-height: 1.6;
+            color: #1e1e2f;
         }
-        
+
+        /* خلفية ديناميكية عائمة */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.2) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* كرات متحركة خلفية */
+        .bg-shape {
+            position: fixed;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0) 70%);
+            border-radius: 50%;
+            filter: blur(70px);
+            z-index: 0;
+            animation: floatBg 18s infinite alternate ease-in-out;
+        }
+
+        .bg-shape-1 {
+            width: 40vw;
+            height: 40vw;
+            top: -10vh;
+            right: -10vw;
+            background: radial-gradient(circle, #667eea55, #764ba255);
+        }
+
+        .bg-shape-2 {
+            width: 35vw;
+            height: 35vw;
+            bottom: -5vh;
+            left: -5vw;
+            background: radial-gradient(circle, #ff9a9e55, #fad0c455);
+            animation-duration: 22s;
+            animation-delay: -5s;
+        }
+
+        @keyframes floatBg {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+            100% { transform: translate(5%, 8%) scale(1.2); opacity: 0.7; }
+        }
+
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            padding: 40px;
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(0px);
+            border-radius: 2.5rem;
+            box-shadow: 0 35px 75px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            overflow: hidden;
+            transition: all 0.4s ease;
         }
-        
+
+        /* تزيين الحواف الداخلية */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            z-index: 3;
+        }
+
+        /* الرأس الرئيسي */
         header {
+            padding: 2.5rem 2rem 1.5rem;
             text-align: center;
-            padding-bottom: 30px;
-            border-bottom: 3px solid #667eea;
-            margin-bottom: 30px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.05));
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
         }
-        
+
+        .shield-icon {
+            font-size: 3.8rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            animation: gentleFloat 3s infinite alternate;
+        }
+
+        @keyframes gentleFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-6px); }
+        }
+
         header h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3a2b6d, #5a3e8e, #8a6bbf);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .app-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #5a4a7c;
+            background: rgba(102, 126, 234, 0.12);
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+            margin-top: 0.5rem;
+        }
+
+        .last-update {
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f0f2fe;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #4a3b6e;
+            font-weight: 500;
+        }
+
+        .last-update i {
             color: #667eea;
-            font-size: 2.2em;
-            margin-bottom: 10px;
+            font-size: 0.9rem;
         }
-        
-        header .app-name {
-            color: #764ba2;
-            font-weight: bold;
-            font-size: 1.3em;
-        }
-        
-        header .last-update {            color: #666;
-            font-size: 0.95em;
-            margin-top: 10px;
-        }
-        
+
+        /* تصميم الأقسام المتطورة */
         section {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #f8f9ff;
-            border-radius: 12px;
-            border-right: 4px solid #667eea;
+            margin: 1.8rem 1.8rem;
+            padding: 1.8rem 2rem;
+            background: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(102, 126, 234, 0.12);
+            position: relative;
+            backdrop-filter: blur(2px);
         }
-        
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px -12px rgba(102, 126, 234, 0.25), 0 1px 3px rgba(0,0,0,0.05);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
         h2 {
-            color: #555;
-            font-size: 1.5em;
-            margin-bottom: 15px;
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #2c2a4a;
+            border-right: 4px solid #667eea;
+            padding-right: 1rem;
+        }
+
+        h2 i {
+            font-size: 1.6rem;
+            color: #667eea;
+            background: linear-gradient(145deg, #667eea, #8f6bcb);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        p {
+            color: #2d3a4b;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        /* قوائم مزخرفة بأيقونات */
+        ul {
+            list-style: none;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-weight: 500;
+            color: #1f2a3e;
         }
-        
-        h2::before {
-            content: "🔹";
+
+        li i {
+            width: 1.8rem;
+            font-size: 1.2rem;
+            text-align: center;
         }
-        
-        p {
-            color: #444;
-            margin-bottom: 12px;
-            text-align: justify;
+
+        .fa-check-circle {
+            color: #2b8c5e;
         }
-        
-        ul {
-            margin-right: 20px;
-            margin-bottom: 12px;
+
+        .fa-times-circle {
+            color: #e26d5c;
         }
-        
-        li {
-            color: #444;
-            margin-bottom: 8px;
+
+        .fa-shield-alt, .fa-laptop-code {
+            color: #5f7fbf;
         }
-        
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(105deg, #eaf7e6, #d4efdf);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 700;
+            color: #1f7840;
+            font-size: 0.9rem;
+            margin: 0.8rem 0 0.5rem;
+            border: 1px solid #b2dfb0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .badge i {
+            font-size: 1rem;
+            color: #2b8c5e;
+        }
+
+        /* مربع التنويه الهام */
+        .no-data {
+            background: linear-gradient(115deg, #eef9ff, #e1f0fe);
+            padding: 1.5rem;
+            border-radius: 1.3rem;
+            border-right: 6px solid #2c9cd4;
+            margin: 1.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            transition: all 0.2s;
+        }
+
+        .no-data i {
+            font-size: 2.5rem;
+            color: #2c9cd4;
+        }
+
+        .no-data strong {
+            color: #0e5e8a;
+        }
+
         .highlight {
-            background: #e8f4fd;
-            padding: 15px;
-            border-radius: 10px;
-            border-right: 4px solid #2196F3;
-            margin: 15px 0;
+            background: #fef5e8;
+            padding: 1.2rem 1.5rem;
+            border-radius: 1.2rem;
+            border-right: 5px solid #f3a683;
+            margin: 1rem 0;
+            font-weight: 500;
         }
-                .no-data {
-            background: #e8f5e9;
-            padding: 20px;
-            border-radius: 10px;
-            border-right: 4px solid #4CAF50;
-            text-align: center;
-            font-weight: bold;
-            color: #2e7d32;
-            margin: 15px 0;
+
+        .highlight i {
+            color: #f3a683;
+            margin-left: 8px;
         }
-        
+
+        /* صندوق التواصل الساحر */
         .contact-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
+            background: linear-gradient(125deg, #2a265f, #3a2c6f, #5d3b8c);
+            margin: 2rem 1.8rem 1.8rem;
+            padding: 2rem;
+            border-radius: 2rem;
             text-align: center;
-            margin-top: 30px;
+            color: white;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 18px 35px -12px rgba(0, 0, 0, 0.4);
         }
-        
+
+        .contact-box::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(15deg);
+            pointer-events: none;
+        }
+
         .contact-box h3 {
-            margin-bottom: 15px;
-            font-size: 1.4em;
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 700;
         }
-        
+
+        .contact-box p {
+            color: #f0eefc;
+            margin-bottom: 1.5rem;
+        }
+
         .contact-box a {
-            color: #fff;
-            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.9rem 2rem;
+            border-radius: 60px;
             font-weight: bold;
-            font-size: 1.1em;
-            display: inline-block;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 8px;
+            font-size: 1.15rem;
+            color: white;
+            text-decoration: none;
             transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.3);
         }
-        
+
         .contact-box a:hover {
-            background: rgba(255,255,255,0.4);
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.35);
+            transform: scale(1.02) translateY(-3px);
+            box-shadow: 0 12px 20px -10px rgba(0,0,0,0.3);
+            gap: 16px;
         }
-        
+
+        /* تذييل أنيق */
         .footer {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #eee;
-            color: #777;
-            font-size: 0.95em;
-        }        
-        .badge {
-            display: inline-block;
-            background: #4CAF50;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            margin: 5px 0;
+            padding: 1.8rem 2rem 2rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            margin-top: 0.5rem;
+            color: #5e6c84;
+            font-weight: 500;
+            background: rgba(248, 250, 255, 0.6);
         }
-        
+
+        .footer i {
+            margin: 0 4px;
+        }
+
+        /* تأثير التمرير للظهور */
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.2), transform 0.6s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* تحسينات للأجهزة اللوحية */
         @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
             .container {
-                padding: 25px;
+                border-radius: 1.8rem;
             }
             header h1 {
-                font-size: 1.8em;
+                font-size: 1.9rem;
             }
             section {
-                padding: 15px;
+                margin: 1rem;
+                padding: 1.3rem;
             }
+            h2 {
+                font-size: 1.4rem;
+            }
+            .contact-box {
+                margin: 1.5rem 1rem;
+                padding: 1.5rem;
+            }
+            .no-data {
+                flex-direction: column;
+                text-align: center;
+            }
+            li {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* شريط تمرير مخصص */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ece9f5;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#667eea, #764ba2);
+            border-radius: 10px;
+        }
+
+        /* زر صغير عائم لطيف (اختياري) */
+        .go-top {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: #ffffffcc;
+            backdrop-filter: blur(10px);
+            width: 45px;
+            height: 45px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a3b6e;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .go-top.visible-btn {
+            opacity: 1;
+            visibility: visible;
+        }
+        .go-top:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.08);
         }
     </style>
 </head>
 <body>
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+
     <div class="container">
         <header>
+            <div class="shield-icon">
+                <i class="fas fa-shield-hooded"></i>
+            </div>
             <h1>سياسة الخصوصية</h1>
-            <div class="app-name">تطبيق "تعلم" - لتطوير مسار التعلم</div>
-            <div class="last-update">آخر تحديث: 25 مارس 2026</div>
+            <div class="app-name">
+                <i class="fas fa-graduation-cap" style="margin-left: 6px;"></i> تطبيق "تعلّم" — مسارك نحو المعرفة
+            </div>
+            <div class="last-update">
+                <i class="far fa-calendar-alt"></i> آخر تحديث: <strong>25 مارس 2026</strong>
+                <i class="fas fa-check-circle" style="color:#2b8c5e;"></i>
+            </div>
         </header>
 
         <section>
-            <h2>مقدمة</h2>
-            <p>مرحباً بك في سياسة الخصوصية الخاصة بتطبيق <strong>"تعلم"</strong>. نولي أهمية قصوى لخصوصيتك وأمان بياناتك. تم إعداد هذه السياسة لتوضيح ممارساتنا بخصوص جمع واستخدام المعلومات، ونؤكد التزامنا بحماية خصوصية مستخدمي تطبيقنا التعليمي المجاني.</p>
+            <h2><i class="fas fa-feather-alt"></i> مقدمة</h2>
+            <p>مرحباً بك في سياسة الخصوصية الخاصة بتطبيق <strong>“تعلّم”</strong>. نضع خصوصيتك على رأس أولوياتنا، ونؤمن بأن التعلم الرقمي يجب أن يكون آمنًا وشفافًا. تم تصميم هذه السياسة لتكون واضحة تمامًا: <strong>لا نجمع بياناتك الشخصية</strong>، ونوفر بيئة تعليمية مطمئنة.</p>
         </section>
 
         <section>
-            <h2>نطاق التطبيق</h2>
-            <p>تطبيق "تعلم" هو تطبيق تعليمي مجاني يهدف إلى:</p>
+            <h2><i class="fas fa-chalkboard-user"></i> نطاق التطبيق</h2>
+            <p>تطبيق "تعلّم" منصة تعليمية مجانية بالكامل، تهدف إلى:</p>
             <ul>
-                <li>تطوير مهارات التعلم لدى المستخدمين</li>
-                <li>توفير محتوى تعليمي مفيد وسهل الوصول</li>
-                <li>تعزيز تجربة التعلم الذاتي دون أي تعقيدات</li>
+                <li><i class="fas fa-check-circle"></i> تطوير مهارات التعلم الذاتي بأساليب عصرية</li>
+                <li><i class="fas fa-check-circle"></i> محتوى تعليمي غني وسهل الوصول</li>
+                <li><i class="fas fa-check-circle"></i> تجربة خالية من التعقيدات والإعلانات المزعجة</li>
             </ul>
-            <div class="badge">✅ تطبيق مجاني 100% - بدون إعلانات مزعجة</div>
-        </section>
-
-        <section>
-            <h2>جمع المعلومات والبيانات</h2>            <div class="no-data">
-                ⚠️ تنويه هام: تطبيق "تعلم" <strong>لا يجمع أي بيانات شخصية</strong> على الإطلاق!
+            <div class="badge">
+                <i class="fas fa-crown"></i> تطبيق مجاني 100% — بدون إعلانات متطفلة
             </div>
-            <p>نؤكد رسمياً أن تطبيقنا:</p>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-database"></i> جمع المعلومات والبيانات</h2>
+            <div class="no-data">
+                <i class="fas fa-ban"></i>
+                <span><strong>تنويه هام جداً:</strong> تطبيق "تعلّم" <strong>لا يجمع أي بيانات شخصية</strong> مطلقًا! لا نطلب اسمًا، بريدًا، رقم هاتف، موقعًا، ولا نستخدم أي أدوات تتبع.</span>
+            </div>
+            <p>نحن نتبنى سياسة "صفر بيانات":</p>
             <ul>
-                <li>❌ لا يحتوي على صفحة تسجيل دخول أو إنشاء حساب</li>
-                <li>❌ لا يطلب أي معلومات شخصية (الاسم، البريد، الهاتف، الموقع...)</li>
-                <li>❌ لا يتتبع نشاط المستخدم أو سجل التصفح</li>
-                <li>❌ لا يستخدم أي أدوات تحليل أو تتبع (Analytics)</li>
-                <li>❌ لا يشارك أي بيانات مع أطراف ثالثة (لعدم وجود بيانات من الأصل)</li>
+                <li><i class="fas fa-times-circle"></i> لا توجد صفحة تسجيل دخول أو حسابات مستخدمين.</li>
+                <li><i class="fas fa-times-circle"></i> لا نطلب أي معلومات تعريفية.</li>
+                <li><i class="fas fa-times-circle"></i> لا نستخدم Google Analytics أو أي أدوات تحليلات.</li>
+                <li><i class="fas fa-times-circle"></i> لا تتم مشاركة أي بيانات مع أطراف ثالثة (لعدم وجود بيانات من الأساس).</li>
             </ul>
         </section>
 
         <section>
-            <h2>الأذونات المطلوبة</h2>
-            <p>قد يطلب التطبيق بعض الأذونات الأساسية لتشغيل محتواه التعليمي، مثل:</p>
+            <h2><i class="fas fa-mobile-alt"></i> الأذونات المطلوبة</h2>
+            <p>قد يطلب التطبيق بعض الأذونات الأساسية فقط لتعزيز تجربة التعلم:</p>
             <ul>
-                <li>الوصول إلى التخزين: لحفظ المواد التعليمية محلياً (اختياري)</li>
-                <li>الاتصال بالإنترنت: لتحميل المحتوى التعليمي الجديد</li>
+                <li><i class="fas fa-folder-open"></i> الوصول إلى التخزين: لحفظ المواد التعليمية محليًا (اختياري بالكامل).</li>
+                <li><i class="fas fa-wifi"></i> الاتصال بالإنترنت: لتحديث المحتوى التعليمي الجديد.</li>
             </ul>
-            <p class="highlight">💡 جميع الأذونات اختيارية، ويتم استخدامها حصراً لتحسين تجربة التعلم، دون جمع أو إرسال أي بيانات.</p>
+            <div class="highlight">
+                <i class="fas fa-lightbulb"></i> جميع الأذونات اختيارية، وتُستخدم حصريًا لتقديم محتوى تعليمي أفضل دون أي جمع للبيانات.
+            </div>
         </section>
 
         <section>
-            <h2>حماية البيانات</h2>
-            <p>بما أن التطبيق لا يجمع أي بيانات، فإن مسألة تخزين أو حماية البيانات الشخصية غير واردة. ومع ذلك، نلتزم بـ:</p>
+            <h2><i class="fas fa-lock"></i> حماية البيانات</h2>
+            <p>نظرًا لعدم جمعنا لأي بيانات شخصية، فإن خطر خرق البيانات الشخصية غير موجود. لكننا نحرص على:</p>
             <ul>
-                <li>تطبيق معايير أمان تقنية عالية لحماية التطبيق من الاختراقات</li>
-                <li>تحديث التطبيق بانتظام لسد أي ثغرات أمنية محتملة</li>
-                <li>مراجعة دورية لكود التطبيق لضمان عدم وجود أكواد جمع بيانات خفية</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>حقوق المستخدم</h2>
-            <p>كمستخدم لتطبيق "تعلم"، لك الحق الكامل في:</p>
-            <ul>
-                <li>استخدام التطبيق بشكل كامل دون تقديم أي معلومات</li>
-                <li>حذف التطبيق في أي وقت دون أي إجراءات إضافية</li>
-                <li>التواصل معنا لطرح أي استفسار حول الخصوصية</li>
-                <li>التحقق من كود التطبيق (إذا كان مفتوح المصدر)</li>
+                <li><i class="fas fa-shield-alt"></i> تحديث التطبيق باستمرار لسد أي ثغرات تقنية.</li>
+                <li><i class="fas fa-code-branch"></i> مراجعة دورية لكود التطبيق للتأكد من خلوه من أدوات جمع البيانات.</li>
+                <li><i class="fas fa-user-secret"></i> الالتزام بأعلى معايير الأمان في متاجر التطبيقات.</li>
             </ul>
         </section>
 
         <section>
-            <h2>تعديلات على سياسة الخصوصية</h2>
-            <p>نحتفظ بالحق في تحديث هذه السياسة في أي وقت. في حال إجراء أي تعديلات جوهرية، سيتم:</p>
+            <h2><i class="fas fa-user-check"></i> حقوق المستخدم</h2>
+            <p>لك كمستخدم حرية كاملة ومطلقة عند استخدام تطبيق "تعلّم":</p>
             <ul>
-                <li>نشر نسخة محدثة داخل التطبيق</li>
-                <li>توضيح تاريخ آخر تحديث في أعلى الصفحة</li>                <li>الاستمرار في الالتزام بمبدأ "عدم جمع البيانات" كسياسة أساسية</li>
+                <li><i class="fas fa-check-circle"></i> استخدام التطبيق دون تقديم أي معلومات.</li>
+                <li><i class="fas fa-trash-alt"></i> حذف التطبيق في أي لحظة ببساطة.</li>
+                <li><i class="fas fa-envelope-open-text"></i> التواصل معنا لطرح أي استفسار حول الخصوصية.</li>
+                <li><i class="fab fa-github"></i> التحقق من الشفافية عبر كود التطبيق (إذا تم توفيره كمصدر مفتوح).</li>
             </ul>
         </section>
 
         <section>
-            <h2>الأسئلة والاستفسارات</h2>
-            <p>إذا كانت لديك أي أسئلة حول سياسة الخصوصية هذه، أو حول ممارسات التطبيق، لا تتردد في التواصل معنا.</p>
+            <h2><i class="fas fa-sync-alt"></i> تعديلات على سياسة الخصوصية</h2>
+            <p>نحتفظ بحق تحديث هذه الصفحة عند الحاجة، وسيتم:</p>
+            <ul>
+                <li><i class="fas fa-bell"></i> نشر نسخة محدثة داخل التطبيق مع توضيح تاريخ آخر تعديل.</li>
+                <li><i class="fas fa-hand-holding-heart"></i> الاستمرار في الالتزام بمبدأ "عدم جمع البيانات" كسياسة ثابتة وأساسية.</li>
+                <li><i class="fas fa-history"></i> حفظ النسخ السابقة عند وجود تغييرات جوهرية.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-question-circle"></i> الأسئلة والاستفسارات</h2>
+            <p>نرحب بتواصلكم في حال وجود أي استفسار حول سياسة الخصوصية أو أداء التطبيق. فريق "تعلّم" يعمل على الرد بأسرع وقت.</p>
         </section>
 
         <div class="contact-box">
-            <h3>📧 تواصل معنا</h3>
-            <p>لأي استفسار أو اقتراح أو إبلاغ عن مشكلة:</p>
-            <a href="mailto:Shield.dra@gmail.com">Shield.dra@gmail.com</a>
+            <h3><i class="fas fa-paper-plane"></i> تواصل معنا</h3>
+            <p>للاستفسارات، الاقتراحات، أو الإبلاغ عن أي ملاحظة</p>
+            <a href="mailto:Shield.dra@gmail.com">
+                <i class="fas fa-envelope"></i> Shield.dra@gmail.com
+                <i class="fas fa-arrow-left"></i>
+            </a>
         </div>
 
         <div class="footer">
-            <p>© 2026 تطبيق "تعلم" - جميع الحقوق محفوظة</p>
-            <p style="margin-top: 8px; font-size: 0.9em; color: #999;">
-                هذه الصفحة مخصصة لعرض سياسة الخصوصية فقط • لا يتم جمع أو تخزين أي بيانات
+            <p><i class="far fa-copyright"></i> 2026 تطبيق "تعلّم" — جميع الحقوق محفوظة</p>
+            <p style="margin-top: 8px; font-size: 0.85rem;">
+                <i class="fas fa-shield-alt"></i> هذه الصفحة لعرض سياسة الخصوصية فقط • لا يتم جمع أو تخزين أي بيانات • تجربة تعلم آمنة
             </p>
         </div>
     </div>
 
+    <!-- زر العودة للأعلى -->
+    <div class="go-top" id="goTopBtn">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
     <script>
-        // إضافة تأثير بسيط عند التحميل
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('section');
-            sections.forEach((section, index) => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(20px)';
-                section.style.transition = 'all 0.5s ease';
-                
-                setTimeout(() => {
-                    section.style.opacity = '1';
-                    section.style.transform = 'translateY(0)';
-                }, 200 * index);
+        // تأثير الظهور عند التمرير (Intersection Observer)
+        const sections = document.querySelectorAll('section');
+        
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -10px 0px"
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // بعد الظهور لا نحتاج مراقبة
+                }
             });
+        }, observerOptions);
+        
+        sections.forEach(section => {
+            observer.observe(section);
         });
+        
+        // إظهار أول قسمين فوراً إذا كانا مرئيين (لضمان سرعة الظهور)
+        setTimeout(() => {
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    section.classList.add('visible');
+                    observer.unobserve(section);
+                }
+            });
+        }, 100);
+        
+        // زر العودة للأعلى
+        const goTopBtn = document.getElementById('goTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 350) {
+                goTopBtn.classList.add('visible-btn');
+            } else {
+                goTopBtn.classList.remove('visible-btn');
+            }
+        });
+        
+        goTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // تأثير إضافي : تحريك خفيف للشعار
+        const shieldIcon = document.querySelector('.shield-icon');
+        if (shieldIcon) {
+            shieldIcon.style.transition = 'transform 0.2s';
+            shieldIcon.addEventListener('mouseenter', () => {
+                shieldIcon.style.transform = 'scale(1.07) rotate(2deg)';
+            });
+            shieldIcon.addEventListener('mouseleave', () => {
+                shieldIcon.style.transform = 'scale(1) rotate(0deg)';
+            });
+        }
+        
+        // إضافة تأثير نقر على زر البريد (تنبيه أنيق)
+        const contactLink = document.querySelector('.contact-box a');
+        if (contactLink) {
+            contactLink.addEventListener('click', (e) => {
+                // مجرد تأثير تحسيني
+                let ripple = document.createElement('span');
+                ripple.classList.add('ripple-effect');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.backgroundColor = 'rgba(255,255,255,0.5)';
+                ripple.style.width = '10px';
+                ripple.style.height = '10px';
+                ripple.style.transform = 'scale(1)';
+                ripple.style.opacity = '1';
+                ripple.style.transition = 'transform 0.5s, opacity 0.5s';
+                const rect = contactLink.getBoundingClientRect();
+                ripple.style.left = `${e.clientX - rect.left}px`;
+                ripple.style.top = `${e.clientY - rect.top}px`;
+                contactLink.style.position = 'relative';
+                contactLink.appendChild(ripple);
+                setTimeout(() => {
+                    ripple.style.transform = 'scale(25)';
+                    ripple.style.opacity = '0';
+                    setTimeout(() => ripple.remove(), 500);
+                }, 20);
+            });
+        }
     </script>
 </body>
 </html>
